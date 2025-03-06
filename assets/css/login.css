@@ -1,9 +1,3 @@
-@charset "UTF-8";
-
-:root {
-    --title_gradient:#13293d, #0a4769, #0a4769, #1b98e0, #e8f1f2;
-    --gradient: 120deg, #13293d, #0a4769, #0a4769, #1b98e0;
-}
 
 * {
     margin: 0;
