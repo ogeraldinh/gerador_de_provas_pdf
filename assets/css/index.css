@@ -48,27 +48,9 @@
 
 
 
-/* .footer img {
-    background-color: #08486B;
-    width: 35px;
-    height: 35px;
-    padding: 10px;
-    border: 10px solid #13293E;
-    border-radius: 100%;
-    position: relative;
-    margin-top: -40px;
-}
 
-.footer-content h2 {
-    color: #0c6493;
-    font-weight: 700;
-}
 
-.footer-content {
-    display: flex;
-    flex-direction: row;
-    padding: 20px;
-}
+
 
 
 .footer-content ul,
