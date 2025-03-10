@@ -22,16 +22,18 @@
 }
 
 .title {
-    font-family: "Montserrat", sans-serif;
-    background-image: linear-gradient(var(--title_gradient));
-    background-clip: text;
+    /* background-image: linear-gradient(var(--title_gradient)); */
+    /* background-clip: text;
     -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    -webkit-text-fill-color: transparent; */
     display: inline-block;
     font-weight: bolder;
     text-align: left;
     font-size: 2em;
     padding: 20px 0;
+}
+.title h1 {
+    font-family: "Montserrat", sans-serif;
 }
 
 .sec-exp {
