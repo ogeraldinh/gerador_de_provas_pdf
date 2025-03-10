@@ -10,18 +10,14 @@
     border-radius: 35px 35px 0 0;
 }
 
-.footer-content {
-    display: flex;
-    align-items: center;
-    flex-direction: row;
-}
 
-.footer-content div {
+.footer-links {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
 }
+
 
 
 .footer img {
@@ -34,8 +30,14 @@
     position: relative;
     margin-top: -40px;
 }
-
-.footer-content h2 {
+.footer-title {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    margin: 30px;
+}
+.footer-title h2 {
     color: #0c6493;
     font-weight: 700;
 }
