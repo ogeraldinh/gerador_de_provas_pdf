@@ -22,6 +22,7 @@
 }
 
 .title {
+    font-family: "Montserrat", sans-serif;
     background-image: linear-gradient(var(--title_gradient));
     background-clip: text;
     -webkit-background-clip: text;
@@ -44,16 +45,3 @@
     padding: 20px;
     border-radius: 0 45px 0 45px;
 }
-
-
-
-
-
-
-
-
-
-.footer-content ul,
-li {
-    list-style: none;
-} */

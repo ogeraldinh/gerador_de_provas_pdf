@@ -36,11 +36,11 @@ li a {
     background-color: #0c6493;
 }
 
-.navbar a#selected {
+/* .navbar a#selected {
     background-color: #e8f1f2;
     color: #0a4769;
     font-weight: 600;
-}
+} */
 
 .navbar #logo img {
     display: flex;

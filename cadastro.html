@@ -9,49 +9,46 @@
       href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
       rel="stylesheet"
     />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="assets/css/main.css">
-    <link rel="stylesheet" href="assets/css/login.css">
-    <title>Página de login</title>
+    <link rel="stylesheet" href="assets/css/cadastro.css">
+    <link rel="stylesheet" href="assets/css/navbar.css">
+    <link rel="stylesheet" href="assets/css/footer.css">
+    <title>Página de Cadastro</title>
   </head>
   <body>
-    <nav class="home-navbar">
-        <div id="logo">
-          <img src="assets/img/logo.svg" alt="logo" />
-        </div>
-      </nav>
+    <nav class="navbar"></nav>
+<main class="main-content">
+  
+      <section>
+        <h1 class="title">Cadastro</h1>
+        <p>Infome seus dados para realizar o cadastro no sistema.</p>
+      </section>
 
+      <section>
+        <form action="" class="form-login">
+            <label for="name">Nome completo:</label>
+            <input type="text" id="nome" name="nome">
+          
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email">
+  
+            <label for="password">Senha:</label>
+            <input type="password" id="password" name="password">
 
-      
-      <footer class="main-footer">
-        <div><img src="assets/img/icon2.svg" alt=""></div>
-        <div class="footer-content">
-          <div>
-            <h2>Desenvolvimento</h2>
-            <h3>Desenvolvedores:</h3>
-            <ul>
-              <li>Geraldo Duarte</li>
-              <li>Lígia Nascimento</li>
-              <li>Paulo Flávio</li>
-              <li>Márcio Gabriel</li>
-            </ul>
-          </div>
-          <div>
-            <h2>Navegação</h2>
-            <ul>
-              <li>Início</li>
-              <li>Professores</li>
-              <li>Questões</li>
-            </ul>
-          </div>
-          <div>
-            <h2>Contatos</h2>
-            <ul>
-              <li>teste@gmail.com</li>
-              <li>teste2@gmail.com</li>
-              <li>+55 (85) 9 9999-9999</li>
-            </ul>
-          </div>
-        </div>
-      </footer>
+            <label for="password">Confirme a senha:</label>
+            <input type="password" id="password" name="c-password">
+
+            <button type="submit">Cadastrar</button>
+        </form>
+    </section>
+</main>
+
+    
+
+    <footer class="footer"></footer>
+    <script src="assets/js/navbar.js"></script>
+    <script src="assets/js/footer.js"></script>
   </body>
 </html>
