@@ -41,7 +41,6 @@
 
 .sec-exp-box {
     background-image: linear-gradient(var(--gradient));
-    width: 300px;
     margin: 10px 0;
     padding: 20px;
     border-radius: 0 45px 0 45px;

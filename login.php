@@ -37,7 +37,7 @@
         </section>
         
         <section>
-            <form action="" method="post" class="form-login">
+            <form action="" method="POST" class="form-login">
                 <label for="email">Email:</label>
                 <input type="text" id="email" name="email">
 

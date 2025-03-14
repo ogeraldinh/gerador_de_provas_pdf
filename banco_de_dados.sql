@@ -88,4 +88,3 @@ INSERT INTO disciplinas (nome) VALUES
 ('Química'),
 ('Matemática');
 select * from usuarios;
-insert into tipos_usuario (tipo) value('professor');

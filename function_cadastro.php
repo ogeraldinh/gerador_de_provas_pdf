@@ -1,26 +1,26 @@
 <?php
 function cadastrarUsuario($nome, $email, $password, $disciplina) {
-    $conn = getconexao();
+    $conn = getConexao();
     $message = '';
     $tipo_id = 2; // ID para "Professor"
 
     // Verificar se o tipo_id existe
     $stmt_check = $conn->prepare('SELECT id FROM tipos_usuario WHERE id = ?');
-    $stmt_check->bindparam('i', $tipo_id);
+    $stmt_check->bindParam(1, $tipo_id, PDO::PARAM_INT); // Corrigido para bindParam
     $stmt_check->execute();
     $result_check = $stmt_check->fetch();
 
-    if ($result_check->num_rows == 0) {
+    if ($result_check === false) {
         return "Erro: Tipo de usuário inválido.";
     }
 
     // Verificar email duplicado
     $stmt_email = $conn->prepare('SELECT email FROM usuarios WHERE email = ?');
-    $stmt_email->bindParam('s', $email);
+    $stmt_email->bindParam(1, $email, PDO::PARAM_STR); // Corrigido para bindParam
     $stmt_email->execute();
     $result_email = $stmt_email->fetch();
 
-    if ($result_email->num_rows > 0) {
+    if ($result_email !== false) {
         return "Este email já está cadastrado.";
     }
 
@@ -34,7 +34,7 @@ function cadastrarUsuario($nome, $email, $password, $disciplina) {
 
     $disciplinas_id = $disciplinas[$disciplina] ?? null;
 
-    if ($disciplinas_id === null) {
+     if ($disciplinas_id === null) {
         return "Disciplina inválida.";
     }
 
@@ -43,16 +43,22 @@ function cadastrarUsuario($nome, $email, $password, $disciplina) {
 
     // Inserir no banco
     $stmt_insert = $conn->prepare('INSERT INTO usuarios (nome, senha, email, tipo_id, disciplinas_id) VALUES (?, ?, ?, ?, ?)');
-    $stmt_insert->bindparam('sssii', $nome, $senha_hash, $email, $tipo_id, $disciplinas_id);
+    $stmt_insert->bindParam(1, $nome, PDO::PARAM_STR);
+    $stmt_insert->bindParam(2, $senha_hash, PDO::PARAM_STR);
+    $stmt_insert->bindParam(3, $email, PDO::PARAM_STR);
+    $stmt_insert->bindParam(4, $tipo_id, PDO::PARAM_INT);
+    $stmt_insert->bindParam(5, $disciplinas_id, PDO::PARAM_INT);
 
     if ($stmt_insert->execute()) {
         $message = "Cadastro realizado com sucesso!";
     } else {
-        $message = "Erro ao cadastrar: " . $stmt_insert->error;
+        $message = "Erro ao cadastrar: " . implode(", ", $stmt_insert->errorInfo()); // Exibir mensagem de erro
     }
 
-    $stmt_insert->Close();
-    $conn->close();
+    $stmt_insert->closeCursor();
+    $stmt_check->closeCursor();
+    $stmt_email->closeCursor();
+    $conn = null; // Fecha a conexão
     return $message;
 }
 

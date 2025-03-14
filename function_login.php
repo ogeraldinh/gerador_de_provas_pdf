@@ -1,26 +1,30 @@
 <?php 
 require_once('conex.php');
+if (!function_exists('getConexao')) {
+    die('A função get_conexao não está definida.');
+}
 session_start();
 $message = ''; // Variável para armazenar a mensagem de retorno
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST'){
-
+    $conn=getConexao();
     $email = $_POST['email'];
-    $pass = $_POST['pass'];
+    $password = $_POST['password'];
 
     // Consulta ao banco de dados na tabela usuario
-    $stmt = $conn->prepare('SELECT * FROM usuario WHERE email = ?');
-    $stmt->bind_param('s', $email);
+    $stmt = $conn->prepare('SELECT * FROM usuarios WHERE email = :email');
+    $stmt->bindParam(':email', $email);
     $stmt->execute();
-    $result = $stmt->get_result();
+    
 
     // Verificação de senha e email
-    if ($result->num_rows > 0) {
-        $usuario = $result->fetch_assoc();
-        if (password_verify($pass, $usuario['senha'])){
-            $_SESSION['id'] = $usuario['id'];
-            $_SESSION['email'] = $usuario['email'];
-            header("Location: index.php"); // Redireciona para a página inicial
+    if ($stmt->rowCount() == 1 ) {
+        $result = $stmt->fetch();
+        $usuario = $result['senha'];
+        if (password_verify($password, $usuario)){
+            $_SESSION['id'] = $usuario;
+            $_SESSION['email'] = $usuario;
+            header("Location: index.html"); // Redireciona para a página inicial
             exit();
         } else {
             $message = 'Senha incorreta.';
