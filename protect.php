@@ -1,9 +1,9 @@
 <?php
     session_start();
-    include('conex.php');
-    if ((!isset($_SESSION['id']) == true) and (!isset($_SESSION['senha']) == true)) {
+    require_once('conex.php');
+    if ((!isset($_SESSION['id']) == true) and (!isset($_SESSION['email']) == true)) {
         unset($_SESSION['id']);
-        unset($_SESSION['senha']);
+        unset($_SESSION['email']);
         session_destroy();
         header('Location: login.php');
         exit();

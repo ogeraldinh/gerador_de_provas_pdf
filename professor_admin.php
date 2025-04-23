@@ -6,6 +6,10 @@ include("funcoes_prof/pesquisar_dis_ou_prof.php");
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
+require_once('admin/verificar_admin.php'); // Inclua a função de verificação
+
+// Chama a função para verificar se o usuário é um administrador
+verificarAdmin();
 
 ?>
 
@@ -55,6 +59,10 @@ if (session_status() === PHP_SESSION_NONE) {
                                 <td><?= htmlspecialchars($user_data['email']) ?></td>
                                 <td><?= htmlspecialchars($user_data['tipos_usuario']) ?></td>
                                 <td><?= htmlspecialchars($user_data['disciplinas_nome']) ?></td>
+                                <td class="acoes">
+                                    <a href="atualizar_prof.php?id=<?= $user_data['id'] ?>" class="btn-editar">Editar</a>
+                                    <a href="funcoes_prof/excluir_professor.php?id=<?= $user_data['id'] ?>" class="btn-excluir" onclick="return confirm('Tem certeza que deseja excluir?')">Excluir</a>
+                                </td>
                             </tr>
                         <?php endwhile; ?>
                     <?php else: ?>
@@ -65,8 +73,10 @@ if (session_status() === PHP_SESSION_NONE) {
                 </tbody>
             </table>
         </div>
+        <div>
+            <a href="cadastro_professor.php" class="btn-cadastro">Cadastrar professor</a>
         </div>
-        <a href="index.php">voltar</a>
+        <a href="admin.php">voltar</a>
     </main>
 
     <footer class="footer"></footer>

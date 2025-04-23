@@ -18,5 +18,5 @@ function getConexao()
         echo "Erro genérico!". $e -> getMessage();
     }
 }
-getConexao();
+$pdo = getConexao()
 ?>
