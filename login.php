@@ -33,7 +33,7 @@
           <div class="title">
             <h1>Não possui cadastro?</h1>
           </div>
-            <button id="btn-title"><a href="cadastro_user.php">Cadastrar</a></button>
+          <button id="btn-title"><a href="cadastro_user.php" class="btn">Cadastrar</a></button>
         </section>
         
         <section>

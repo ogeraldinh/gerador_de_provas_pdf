@@ -1,8 +1,11 @@
 <?php
-include('../protect.php');
-    require_once('conex.php');
-  $pdo = getConexao(); // Chama a função para obter a conexão
-  include('function_user.php');
+ require_once('../conex.php'); // Inclua seu arquivo de conexão
+ include('../protect.php'); 
+ require_once('verificar_admin.php'); // Inclua a função de verificação
+ 
+ // Chama a função para verificar se o usuário é um administrador
+ verificarAdmin();
+ include('function_cadastro.php')
 
 ?>
 
@@ -19,10 +22,10 @@ include('../protect.php');
     />
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     
-    <link rel="stylesheet" href="assets/css/main.css">
-    <link rel="stylesheet" href="assets/css/cadastro.css">
-    <link rel="stylesheet" href="assets/css/navbar.css">
-    <link rel="stylesheet" href="assets/css/footer.css">
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/cadastro.css">
+    <link rel="stylesheet" href="../assets/css/navbar.css">
+    <link rel="stylesheet" href="../assets/css/footer.css">
     <title>Página de Cadastro</title>
   </head>
   <body>
@@ -42,6 +45,17 @@ include('../protect.php');
     <label for="nome">Nome completo:</label>
     <input type="text" id="nome" name="nome" required>
 
+    <label for="disciplina">Disciplina que leciona:</label>
+    <select id ='disciplina' name="disciplina">
+    <?php
+      $query = $pdo->query("SELECT id, nome FROM disciplinas ORDER BY nome");
+      while($reg = $query->fetch(PDO::FETCH_ASSOC)) {
+        echo '<option value="'.$reg["id"].'">'.$reg["nome"].'</option>';    
+      }
+    ?>
+</select>
+
+
     <label for="email">Email:</label>
     <input type="email" id="email" name="email" required>
 
@@ -54,7 +68,7 @@ include('../protect.php');
     <button type="submit">Cadastrar</button>
 
 </form><br>
-<a href="login.php"><button>já possuo conta</button></a>
+<a href="../login.php"><button>já possuo conta</button></a>
     </section>
     
 
@@ -63,7 +77,7 @@ include('../protect.php');
     
 
     <footer class="footer"></footer>
-    <script src="assets/js/navbar.js"></script>
-    <script src="assets/js/footer.js"></script>
+    <script src="../assets/js/navbar.js"></script>
+    <script src="../assets/js/footer.js"></script>
   </body>
 </html>
