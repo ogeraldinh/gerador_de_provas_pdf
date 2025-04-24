@@ -1,6 +1,7 @@
 <?php
-require_once('conex.php');
-include('protect.php');
+require_once('../conex.php');
+include('../protect.php');
+
 
 
 ?>
@@ -21,9 +22,9 @@ include('protect.php');
     href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
     rel="stylesheet">
 
-  <link rel="stylesheet" href="assets/css/main.css" />
-  <link rel="stylesheet" href="assets/css/navbar.css" />
-  <link rel="stylesheet" href="assets/css/footer.css" />
+  <link rel="stylesheet" href="../assets/css/main.css" />
+  <link rel="stylesheet" href="../assets/css/navbar.css" />
+  <link rel="stylesheet" href="../assets/css/footer.css" />
 
   <title>Banco de Questões</title>
 </head>
@@ -32,23 +33,24 @@ include('protect.php');
   <nav class="navbar"></nav>
       <main>
         <table>
-          <thead>
-            <tr>assunto</tr>
-            <tr>questão</tr>
-          </thead>
-          <tbody>
-            
-          </tbody>
-          <td>aadas</td>
-          <td></td>
+          <th> Questões </th>
+            <tr>assunto
+                <td>aadas</td>
+            </tr>
+            <tr>questão
+                <td><input type="checkbox"></a></td>
+            </tr>
+          
+          
           <td></td>
           <td></td>
         </table>
+        <a href="cadastro_questoes.php"></a>
       </main>
   <footer class="footer"></footer>
 
-  <script src="assets/js/navbar.js"></script>
-  <script src="assets/js/footer.js"></script>
+  <script src="../assets/js/navbar.js"></script>
+  <script src="../assets/js/footer.js"></script>
 </body>
 
 </html>

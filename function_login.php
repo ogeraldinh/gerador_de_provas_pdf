@@ -29,8 +29,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $_SESSION['email'] = $result['email']; // Armazena o email do usuário
             $_SESSION['tipo_id'] = $result['tipo_id']; // Armazena o tipo do usuário
 
-            // Redireciona para a página inicial ou painel do administrador
-            header("Location: index.php"); // Redireciona para a página inicial
+            // Redireciona com base no tipo de usuário
+            if ($_SESSION['tipo_id'] == 1) { // Admin
+                header("Location: admin.php"); // Redireciona para o painel do administrador
+            } else {
+                header("Location: index.php"); // Redireciona para a página inicial
+            }
             exit();
         } else {
             $message = 'Senha incorreta.';

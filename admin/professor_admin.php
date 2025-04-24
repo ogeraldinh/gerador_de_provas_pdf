@@ -1,11 +1,15 @@
 <?php
-require_once('conex.php');
-include('protect.php');
-include("pesquisar_dis_ou_prof.php");
+require_once('../conex.php');
+include('../protect.php');
+include("../pesquisar_dis_ou_prof.php");
 // Inicia sessão se não estiver iniciada
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
+require_once('verificar_admin.php'); // Inclua a função de verificação
+
+// Chama a função para verificar se o usuário é um administrador
+verificarAdmin();
 
 ?>
 
@@ -17,10 +21,10 @@ if (session_status() === PHP_SESSION_NONE) {
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="assets/css/main.css" />
-    <link rel="stylesheet" href="assets/css/navbar.css" />
-    <link rel="stylesheet" href="assets/css/footer.css" />
-    <link rel="stylesheet" href="assets/css/tabela.css" />
+    <link rel="stylesheet" href="../assets/css/main.css" />
+    <link rel="stylesheet" href="../assets/css/navbar.css" />
+    <link rel="stylesheet" href="../assets/css/footer.css" />
+    <link rel="stylesheet" href="../assets/css/tabela.css" />
     <title>Professores</title>
 </head>
 <body>
@@ -38,21 +42,27 @@ if (session_status() === PHP_SESSION_NONE) {
             <table class="tabela-dados">
                 <thead>
                     <tr>
+                        <th>ID</th>
                         <th>Nome</th>
                         <th>Email</th>
+                        <th>Tipo</th>
                         <th>Disciplina</th>
-                        
+                        <th>Ações</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php if ($result->rowCount() > 0): ?>
                         <?php while ($user_data = $result->fetch(PDO::FETCH_ASSOC)): ?>
                             <tr>
-                               
+                                <td><?= htmlspecialchars($user_data['id']) ?></td>
                                 <td><?= htmlspecialchars($user_data['nome']) ?></td>
                                 <td><?= htmlspecialchars($user_data['email']) ?></td>
-                               
+                                <td><?= htmlspecialchars($user_data['tipos_usuario']) ?></td>
                                 <td><?= htmlspecialchars($user_data['disciplinas_nome']) ?></td>
+                                <td class="acoes">
+                                    <a href="atualizar_prof.php?id=<?= $user_data['id'] ?>" class="btn-editar">Editar</a>
+                                    <a href="excluir_professor.php?id=<?= $user_data['id'] ?>" class="btn-excluir" onclick="return confirm('Tem certeza que deseja excluir?')">Excluir</a>
+                                </td>
                             </tr>
                         <?php endwhile; ?>
                     <?php else: ?>
@@ -63,8 +73,10 @@ if (session_status() === PHP_SESSION_NONE) {
                 </tbody>
             </table>
         </div>
+        <div>
+            <a href="cadastro_professor.php" class="btn-cadastro">Cadastrar professor</a>
         </div>
-        <a href="index.php">voltar</a>
+        <a href="admin.php">voltar</a>
     </main>
 
     <footer class="footer"></footer>
