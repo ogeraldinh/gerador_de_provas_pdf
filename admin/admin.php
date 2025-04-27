@@ -18,7 +18,6 @@ verificarAdmin();
     <p>Aqui você pode gerenciar usuários, disciplinas, etc.</p>
     <a href="../function_sair.php">Sair</a>
     <a href="professor_admin.php">Gerenciar Professor</a>
-    <a href="questoes_admin.php">Gerenciar Questões</a>
     <a href="disciplinas_admin.php">Gerenciar Disciplina</a>
     <a href="../index.php">Ver como usuario</a>
 </body>

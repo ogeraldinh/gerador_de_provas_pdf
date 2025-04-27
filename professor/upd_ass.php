@@ -20,16 +20,6 @@ try {
 
         $conn = getConexao();
 
-        // Verificar se o tipo_id existe (se necessário)
-        // Se você não estiver usando $tipo_id, remova essa parte
-        // $stmt_check = $conn->prepare('SELECT id FROM tipos_usuario WHERE id = ?');
-        // $stmt_check->bindParam(1, $tipo_id, PDO::PARAM_INT);
-        // $stmt_check->execute();
-        // $result_check = $stmt_check->fetch(PDO::FETCH_ASSOC);
-        // if ($result_check === false) {
-        //     return "Erro: Tipo de usuário inválido.";
-        // }
-
 
         // Atualiza os dados do Assunto
         $stmt = $conn->prepare("UPDATE assuntos SET nome = :nome, disciplina_id = :disciplina_id WHERE id = :id");

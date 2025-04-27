@@ -27,33 +27,35 @@ include("pesquisar_disc.php");
         <h1>Lista de Disciplinas</h1>
         
         <form method="POST" class="search-form">
-            <input type="text" name="buscar" placeholder="Pesquisar por nome ou disciplina" value="<?= htmlspecialchars($buscar) ?>">
-            <button type="submit" class="btn-buscar">Buscar</button>
+            <input type="text" name="buscar_disc" placeholder="Pesquisar por nome ou disciplina" 
+                   value="<?= htmlspecialchars($buscar_disc, ENT_QUOTES, 'UTF-8') ?>">
+            <button type="submit" class="btn-buscar_disc">Buscar</button>
         </form>
         
         <div class="table-responsive">
             <table class="tabela-dados">
                 <thead>
                     <tr>
-                        <th>Disciplina</th>
+
+                        <th>Nome</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <?php if ($result->rowCount() > 0): ?>
-                        <?php while ($user_data = $result->fetch(PDO::FETCH_ASSOC)): ?>
+                    <?php if (count($disciplinas) > 0): ?>
+                        <?php foreach ($disciplinas as $disciplina): ?>
                             <tr>
-                                <td><?= htmlspecialchars($user_data['nome']) ?></td>
+                                <td><?= htmlspecialchars($disciplina['nome'], ENT_QUOTES, 'UTF-8') ?></td>
                             </tr>
-                        <?php endwhile; ?>
+                        <?php endforeach; ?>
                     <?php else: ?>
                         <tr>
-                            <td colspan="1" class="sem-dados">Nenhuma disciplina encontrada</td>
+                            <td colspan="2" class="sem-dados">Nenhuma disciplina encontrada</td>
                         </tr>
                     <?php endif; ?>
                 </tbody>
             </table>
         </div>
-        <a href="index.php">voltar</a>
+        <a href="index.php">Voltar</a>
     </main>
 
     <footer class="footer"></footer>

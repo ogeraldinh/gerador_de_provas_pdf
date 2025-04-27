@@ -1,5 +1,5 @@
 <?php
-include('../protect.php');
+
     require_once('conex.php');
   $pdo = getConexao(); // Chama a função para obter a conexão
   include('function_user.php');
