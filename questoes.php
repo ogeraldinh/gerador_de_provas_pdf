@@ -2,7 +2,7 @@
 require_once('conex.php');
 include('protect.php');
 
-include('function_questoes.php')
+
 ?>
 
 <!DOCTYPE html>
@@ -31,43 +31,31 @@ include('function_questoes.php')
 <body>
   <nav class="navbar"></nav>
       <main>
-        <form action="" method="POST" class="form-login">
-          <label for="enunciado">Digite o Enunciado:</label>
-          <input type="text" id="nome" name="nome" required>
-
-          <label for="disciplina">Disciplina que leciona:</label>
-          <select id ='disciplina' name="disciplina">
-          <?php
-            $query = $pdo->query("SELECT id, nome FROM disciplinas ORDER BY nome");
-            while($reg = $query->fetch(PDO::FETCH_ASSOC)) {
-              echo '<option value="'.$reg["id"].'">'.$reg["nome"].'</option>';    
+      <form method="POST" action="questoes_.php">
+        <label for="disciplina">Disciplina:</label>
+        <select name="disciplina" id="disciplina" required>
+            <option value="">Selecione uma disciplina</option>
+            <?php
+            // Carregar disciplinas do banco de dados
+            $conn = getConexao();
+            $stmt = $conn->query("SELECT * FROM disciplinas");
+            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                echo "<option value='{$row['id']}'>{$row['nome']}</option>";
             }
-          ?>
-          </select>
+            ?>
+        </select>
 
-
-          <label for="Alternativa_A">Alternativa A :</label>
-          <input type="text" id="Alternativa_A" name="Alternativa_A"  required>
-          <label for="Alternativa_B">Alternativa B :</label>
-          <input type="text" id="Alternativa_A" name="Alternativa_A" required>
-          <label for="Alternativa C">Alternativa C :</label>
-          <input type="text" id="Alternativa_A" name="Alternativa_A"  required>
-          <label for="Alternativa A">Alternativa D :</label>
-          <input type="text" id="Alternativa_A" name="Alternativa_A" required>
-          <label for="Alternativa A">Alternativa E :</label>
-          <input type="text" id="Alternativa_A" name="Alternativa_A" required>  
-            <label for="Correta"> Alternativa Correta</label>
-          <select name="Correta" id="Correta">
-            <option  value="A">A</option>
-            <option value="B">B</option>
-            <option value="C">C</option>
-            <option value="D">D</option>
-            <option value="E">E</option>
-          </select>
-
-          <button type="submit">Cadastrar</button>
-
-        </form>
+        <label for="assunto">Assunto:</label>
+        <select name="assunto" id="assunto" required>
+            <option value="">Selecione um assunto</option>
+            <?php
+            // Carregar assuntos do banco de dados
+            $stmt = $conn->query("SELECT * FROM assuntos" );
+            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                echo "<option value='{$row['id']}'>{$row['nome']}</option>";
+            }
+            ?>
+        </select><button type="submit">Buscar</button>
       </main>
   <footer class="footer"></footer>
 

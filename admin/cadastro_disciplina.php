@@ -1,9 +1,9 @@
 <?php
 
-    require_once('conex.php');
+  require_once('../conex.php');
   $pdo = getConexao(); // Chama a função para obter a conexão
-  include('function_user.php');
-
+  include('function_cad_disc.php');
+  include('../protect.php');
 ?>
 
 <!DOCTYPE html>
@@ -23,7 +23,7 @@
     <link rel="stylesheet" href="assets/css/cadastro.css">
     <link rel="stylesheet" href="assets/css/navbar.css">
     <link rel="stylesheet" href="assets/css/footer.css">
-    <title>Página de Cadastro</title>
+    <title>Página de Cadastro de Disciplinas</title>
   </head>
   <body>
     <nav class="navbar"></nav>
@@ -31,7 +31,7 @@
   
       <section>
         <h1 class="title">Cadastro</h1>
-        <p>Infome seus dados para realizar o cadastro no sistema.</p>
+        <p>Infome seus dados para realizar o cadastro da disciplina no sistema.</p>
       </section>
 
       <section>
@@ -39,22 +39,12 @@
             <p><?php echo $message; ?></p>
         <?php endif; ?>
       <form action="" method="POST" class="form-login">
-    <label for="nome">Nome completo:</label>
+    <label for="nome">Nome :</label>
     <input type="text" id="nome" name="nome" required>
-
-    <label for="email">Email:</label>
-    <input type="email" id="email" name="email" required>
-
-    <label for="password">Senha:</label>
-    <input type="password" id="password" name="password" required>
-
-    <label for="c-password">Confirme a senha:</label>
-    <input type="password" id="c-password" name="c-password" required>
-
     <button type="submit">Cadastrar</button>
 
 </form><br>
-<a href="login.php"><button>já possuo conta</button></a>
+<a href="disciplinas_admin.php"><button>Voltar</button></a>
     </section>
     
 
