@@ -31,19 +31,31 @@ include('protect.php');
 <body>
   <nav class="navbar"></nav>
       <main>
-        <table>
-          <thead>
-            <tr>assunto</tr>
-            <tr>questão</tr>
-          </thead>
-          <tbody>
-            
-          </tbody>
-          <td>aadas</td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </table>
+      <form method="POST" action="questoes_.php">
+        <label for="disciplina">Disciplina:</label>
+        <select name="disciplina" id="disciplina" required>
+            <option value="">Selecione uma disciplina</option>
+            <?php
+            // Carregar disciplinas do banco de dados
+            $conn = getConexao();
+            $stmt = $conn->query("SELECT * FROM disciplinas");
+            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                echo "<option value='{$row['id']}'>{$row['nome']}</option>";
+            }
+            ?>
+        </select>
+
+        <label for="assunto">Assunto:</label>
+        <select name="assunto" id="assunto" required>
+            <option value="">Selecione um assunto</option>
+            <?php
+            // Carregar assuntos do banco de dados
+            $stmt = $conn->query("SELECT * FROM assuntos" );
+            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                echo "<option value='{$row['id']}'>{$row['nome']}</option>";
+            }
+            ?>
+        </select><button type="submit">Buscar</button>
       </main>
   <footer class="footer"></footer>
 

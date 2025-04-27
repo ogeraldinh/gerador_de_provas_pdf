@@ -1,31 +1,30 @@
 <?php
-require_once('../conex.php');
+require_once('conex.php');
 
-$busca = $_POST['buscar'] ?? ''; // Certifique-se de que a variável está definida
+// Corrigindo o nome da variável (deve ser consistente)
+$buscar_disc = filter_input(INPUT_POST, 'buscar_disc') ?? '';
 
 // Query base com prepared statement
-$sql = "SELECT assuntos.id, assuntos.nome,
-               disciplinas.nome AS disciplinas_nome 
-        FROM assuntos 
-        JOIN disciplinas ON assuntos.disciplina_id = disciplinas.id"; // Corrigido para 'disciplinas_id'
+$sql = "SELECT disciplinas.id, disciplinas.nome
+        FROM disciplinas";
 
 // Adiciona filtro de busca se existir
-if (!empty($busca)) {
-    $sql .= " WHERE (assuntos.nome LIKE :busca OR disciplinas.nome LIKE :busca)";
+if (!empty($buscar_disc)) {
+    $sql .= " WHERE disciplinas.nome LIKE :busca_disc";
 }
 
-$sql .= " ORDER BY assuntos.nome";
+$sql .= " ORDER BY disciplinas.nome";
 
 try {
     $stmt = $pdo->prepare($sql);
     
-    if (!empty($busca)) {
-        $termoBusca = "%$busca%";
-        $stmt->bindParam(':busca', $termoBusca, PDO::PARAM_STR);
+    if (!empty($buscar_disc)) {
+        $termoBuscar = "%$buscar_disc%";
+        $stmt->bindParam(':busca_disc', $termoBuscar, PDO::PARAM_STR);
     }
     
     $stmt->execute();
-    $result = $stmt;
+    $disciplinas = $stmt->fetchAll(PDO::FETCH_ASSOC);
 } catch (PDOException $e) {
     die("Erro ao consultar o banco de dados: " . $e->getMessage());
 }

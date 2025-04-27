@@ -50,14 +50,14 @@ verificarProfessor();
                 </thead>
                 <tbody>
                     <?php if ($result->rowCount() > 0): ?>
-                        <?php while ($user_data = $result->fetch(PDO::FETCH_ASSOC)): ?>
+                        <?php while ($assunto = $result->fetch(PDO::FETCH_ASSOC)): ?>
                             <tr>
                                
-                                <td><?= htmlspecialchars($user_data['nome']) ?></td>
-                                <td><?= htmlspecialchars($user_data['disciplinas_nome']) ?></td>
+                                <td><?= htmlspecialchars($assunto['nome']) ?></td>
+                                <td><?= htmlspecialchars($assunto['disciplinas_nome']) ?></td>
                                 <td class="acoes">
-                                    <a href="atualizar_assunto.php?id=<?= $user_data['id'] ?>" class="btn-editar">Editar</a>
-                                    <a href="excluir_assunto.php?id=<?= $user_data['id'] ?>" class="btn-excluir" onclick="return confirm('Tem certeza que deseja excluir?')">Excluir</a>
+                                    <a href="atualizar_assunto.php?id=<?= $assunto['id'] ?>" class="btn-editar">Editar</a>
+                                    <a href="excluir_assunto.php?id=<?= $assunto['id'] ?>" class="btn-excluir" onclick="return confirm('Tem certeza que deseja excluir?')">Excluir</a>
                                 </td>
                             </tr>
                         <?php endwhile; ?>

@@ -23,16 +23,14 @@ if (!$conn) {
 }
 
 // Processamento do formulário
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    echo "O código PHP está sendo executado."; // Para verificar se o PHP está funcionando
-    error_log("Formulário enviado."); // Log para verificar se o formulário foi enviado
+if ($_SERVER['REQUEST_METHOD'] == 'POST') { // Log para verificar se o formulário foi enviado
 
     $disciplina_id = $_POST['disciplina'] ?? null;
     $assunto_id = $_POST['assunto'] ?? null;
     $texto = $_POST['texto'] ?? '';
     $alternativas = $_POST['alternativas'] ?? [];
     $correta = $_POST['correta'] ?? null;
-    $professor_id = $_SESSION['id'] ?? null; // ID do professor
+    $professor_id = $_SESSION['id'] ?? null; 
 
     // Verifica se todos os campos obrigatórios foram preenchidos
     if (!empty($disciplina_id) && !empty($assunto_id) && !empty($texto) && count($alternativas) >= 2) {
