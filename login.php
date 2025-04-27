@@ -44,7 +44,16 @@
                 <label for="password">Senha:</label>
                 <input type="password" id="password" name="password">
 
-                <div class="submit"><input type="submit" id="submit" value="Entrar"></div>
+                <button style=" border: none;
+    border-radius: 20px;
+    padding: 0 30px;
+    font-weight: 600;
+    font-size: 0.7em;
+    background-color: #08486B;
+    color: #fff;
+    "  type="submit">Entrar</button>
+                </div>
+                <?php echo "<p>" . htmlspecialchars($message) . "</p>"?>
             </form>
         </section>
     </main>

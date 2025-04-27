@@ -1,5 +1,5 @@
-CREATE DATABASE gerador_de_provas;
-USE gerador_de_provas;
+CREATE DATABASE gerador_provas;
+USE gerador_provas;
 
 -- Tabela de Tipos de Usuário
 CREATE TABLE tipos_usuario (
@@ -8,20 +8,15 @@ CREATE TABLE tipos_usuario (
 );
 
 -- Tabela de Professores
-CREATE TABLE disciplinas (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    nome VARCHAR(100) NOT NULL UNIQUE
-);
-
 CREATE TABLE professores (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(100) NOT NULL,
     email VARCHAR(100) NOT NULL UNIQUE,
     senha VARCHAR(255) NOT NULL,
     tipo_id INT NOT NULL,
-    disciplinas_id INT,
+    disciplinas_id INT NOT NULL,
     FOREIGN KEY (tipo_id) REFERENCES tipos_usuario(id),
-    FOREIGN KEY (disciplinas_id) REFERENCES disciplinas(id) ON DELETE SET NULL
+    foreign key(disciplinas_id) REFERENCES disciplinas(id)
 );
 
   -- Tabela de usuarios normais
@@ -32,6 +27,12 @@ CREATE TABLE usuarios (
     senha VARCHAR(255) NOT NULL,
     tipo_id INT NOT NULL);
     
+-- Tabela de Disciplinas
+CREATE TABLE disciplinas (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL UNIQUE
+);
+
 -- Tabela de Assuntos
 CREATE TABLE assuntos (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -49,7 +50,7 @@ CREATE TABLE questoes (
     professor_id INT NOT NULL,
     FOREIGN KEY (disciplina_id) REFERENCES disciplinas(id),
     FOREIGN KEY (assunto_id) REFERENCES assuntos(id),
-    FOREIGN KEY (professor_id) REFERENCES professores(id)
+    FOREIGN KEY (professor_id) REFERENCES usuarios(id)
 );
 
 -- Tabela de Alternativas (para questões de múltipla escolha)
@@ -67,7 +68,7 @@ CREATE TABLE provas (
     professor_id INT NOT NULL,
     nome VARCHAR(100) NOT NULL,
     data_criacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (professor_id) REFERENCES professores(id)
+    FOREIGN KEY (professor_id) REFERENCES usuarios(id)
 );
 
 -- Tabela Relacionando Provas e Questões
@@ -77,7 +78,6 @@ CREATE TABLE prova_questoes (
     PRIMARY KEY (prova_id, questao_id),
     FOREIGN KEY (prova_id) REFERENCES provas(id),
     FOREIGN KEY (questao_id) REFERENCES questoes(id)
-	ON DELETE CASCADE
 );
 -- Inserindo Tipos de Usuário (Administrador e Professor)
 INSERT INTO tipos_usuario (tipo) VALUES ('Usuario'),('Administrador'), ('Professor');

@@ -28,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $_SESSION['id'] = $result['id'];
             $_SESSION['email'] = $result['email'];
             $_SESSION['tipo_id'] = $result['tipo_id'];
-
+            $_SESSION['nome'] = $result['nome'];
             // Redireciona com base no tipo de usuário
             if ($_SESSION['tipo_id'] == 1) { // Admin
                 header("Location: admin/admin.php");
@@ -55,7 +55,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $_SESSION['id'] = $result['id'];
                 $_SESSION['email'] = $result['email'];
                 $_SESSION['tipo_id'] = 2; // Supondo que 2 seja o tipo para professores
-
+                $_SESSION['nome'] = $result['nome'];
                 // Debug: Verifique se as variáveis de sessão estão corretas
                 // var_dump($_SESSION); exit();
 

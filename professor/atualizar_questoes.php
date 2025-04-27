@@ -93,7 +93,7 @@ $conn = null;
                 <option value="">Selecione um assunto</option>
                 <?php
                                 // Carregar assuntos da disciplina selecionada
-                $stmt_assuntos = $conn->prepare("SELECT id, nome FROM assuntos WHERE disciplina_id = :disciplina_id");
+                $stmt_assuntos = $conn->prepare("SELECT id, nome FROM assuntos ");
                 $stmt_assuntos->bindParam(':disciplina_id', $questao['disciplina_id'], PDO::PARAM_INT);
                 $stmt_assuntos->execute();
                 while ($row = $stmt_assuntos->fetch(PDO::FETCH_ASSOC)) {

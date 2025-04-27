@@ -18,8 +18,8 @@
 
 .title {
     background-image: linear-gradient(#13293d, #0a4769, #0a4769, #1b98e0, #e8f1f2);
-    background-clip: text;
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
     font-weight: bolder;
     text-align: left;
@@ -75,4 +75,7 @@ button#btn-title a{
 }
 .form-login input:focus {
     outline: none;
+}
+echo{
+    font-size: 5px;
 }

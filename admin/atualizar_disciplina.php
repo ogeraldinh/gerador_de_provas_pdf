@@ -60,6 +60,6 @@ $conn = null;
 <br>
       
    
-    <a href="excluir_disciplina.php?id=<?= $disciplinas['id'] ?>" class="btn-excluir" onclick="return confirm('Tem certeza que deseja excluir?')">Excluir</a>
+    <a href="disciplinas_admin.php?id=<?= $disciplinas['id'] ?>" class="btn-voltar" >voltar</a>
 </body>
 </html>

@@ -4,7 +4,10 @@ function cadastrarProfessor($nome, $email, $password, $disciplina) {
     $conn = getConexao();
     $message = '';
     $tipo_id = 2; // ID para "Professor"
-
+    $senha = $_POST['password'];
+    $confirmacao = $_POST['c-password'];
+    
+    
     // Verificar se o tipo_id existe
     $stmt_check = $conn->prepare('SELECT id FROM tipos_usuario WHERE id = ?');
     $stmt_check->bindParam(1, $tipo_id, PDO::PARAM_INT);
@@ -35,26 +38,32 @@ function cadastrarProfessor($nome, $email, $password, $disciplina) {
     if ($disciplinas_id === null) {
         return "Disciplina inválida.";
     }
-
-    // Criptografar senha
-    $senha_hash = password_hash($password, PASSWORD_DEFAULT);
-
-    // Inserir no banco
-    $stmt_insert = $conn->prepare('INSERT INTO professores (nome, senha, email, tipo_id, disciplinas_id) VALUES (?, ?, ?, ?, ?)');
-    $stmt_insert->bindParam(1, $nome, PDO::PARAM_STR);
-    $stmt_insert->bindParam(2, $senha_hash, PDO::PARAM_STR);
-    $stmt_insert->bindParam(3, $email, PDO::PARAM_STR);
-    $stmt_insert->bindParam(4, $tipo_id, PDO::PARAM_INT);
-    $stmt_insert->bindParam(5, $disciplinas_id, PDO::PARAM_INT);
-
-    if ($stmt_insert->execute()) {
-        echo "Cadastro Realizado com sucesso!!";
-        echo "<button type='button' class='btn btn-success'><a href='professor_admin.php'>Voltar</a></button>";            exit();
-    } else {
-        $message = "Erro ao cadastrar: " . implode(", ", $stmt_insert->errorInfo()); // Exibir mensagem de erro
+    // Verifica se as senhas coincidem
+    if ($senha !== $confirmacao) {
+         echo "As senhas não coincidem!";
+        echo "<button type='button' class='btn btn-success'><a href='cadastro_professor.php'>tentar novamente</a></button>";            exit();
+    }else{
+        // Criptografar senha
+        $senha_hash = password_hash($password, PASSWORD_DEFAULT);
+        
+        // Inserir no banco
+        $stmt_insert = $conn->prepare('INSERT INTO professores (nome, senha, email, tipo_id, disciplinas_id) VALUES (?, ?, ?, ?, ?)');
+        $stmt_insert->bindParam(1, $nome, PDO::PARAM_STR);
+        $stmt_insert->bindParam(2, $senha_hash, PDO::PARAM_STR);
+        $stmt_insert->bindParam(3, $email, PDO::PARAM_STR);
+        $stmt_insert->bindParam(4, $tipo_id, PDO::PARAM_INT);
+        $stmt_insert->bindParam(5, $disciplinas_id, PDO::PARAM_INT);
+    
+        if ($stmt_insert->execute()) {
+            echo "Cadastro Realizado com sucesso!!";
+            echo "<button type='button' class='btn btn-success'><a href='professor_admin.php'>Voltar</a></button>";            exit();
+        } else {
+            $message = "Erro ao cadastrar: " . implode(", ", $stmt_insert->errorInfo()); // Exibir mensagem de erro
+        }
+        $stmt_insert->closeCursor();
     }
-
-    $stmt_insert->closeCursor();
+    
+   
     $stmt_check->closeCursor();
     $stmt_email->closeCursor();
     $conn = null; // Fecha a conexão

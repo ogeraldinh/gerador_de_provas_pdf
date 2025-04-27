@@ -81,9 +81,18 @@ $conn = null;
             ?>
         </select>
         <br>
-
+            
         <input type="submit" value="Atualizar">
+        
     </form>
+    <a style=" border: none;
+    border-radius: 20px;
+    padding: 0 30px;
+    font-weight: 600;
+    font-size: 0.9em;
+    background-color: #08486B;
+    color: #fff;
+    " href="assunto_prof.php">Voltar<a>
 </body>
 
 </html>

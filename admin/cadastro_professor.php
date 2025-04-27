@@ -68,7 +68,7 @@
     <button type="submit">Cadastrar</button>
 
 </form><br>
-<a href="../login.php"><button>já possuo conta</button></a>
+<a href="professor_admin.php"><button>voltar</button></a>
     </section>
     
 

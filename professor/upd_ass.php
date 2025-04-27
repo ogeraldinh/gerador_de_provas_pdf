@@ -29,7 +29,7 @@ try {
 
         if ($stmt->execute()) {
             echo "Assunto atualizado com sucesso!";
-            echo "<button type='button' class='btn btn-success'><a href='Assunto_admin.php'>Voltar</a></button>";            exit();
+            echo "<button type='button' class='btn btn-success'><a href='assunto_prof.php'>Voltar</a></button>";            exit();
             
         } else {
             echo "Erro ao atualizar Assunto.";

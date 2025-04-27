@@ -23,7 +23,7 @@ function cadastrarAssunto($nome,  $disciplina) {
 
     if ($stmt_insert->execute()) {
         echo "Cadastro Realizado com sucesso!!";
-        echo "<button type='button' class='btn btn-success'><a href='assunto_admin.php'>Voltar</a></button>";            exit();
+        echo "<button type='button' class='btn btn-success'><a href='assunto_prof.php'>Voltar</a></button>";            exit();
     } else {
         $message = "Erro ao cadastrar: " . implode(", ", $stmt_insert->errorInfo()); // Exibir mensagem de erro
     }

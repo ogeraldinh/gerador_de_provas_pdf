@@ -3,10 +3,13 @@ require_once('../conex.php');
 include("../pesquisar_disc.php");
 include('../protect.php');
 
+// Inicializa a variável $result
+
 ?>
 
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -19,26 +22,28 @@ include('../protect.php');
     <link rel="stylesheet" href="../assets/css/tabela.css" />
     <title>Disciplinas</title>
 </head>
+
 <body>
     <nav class="navbar"></nav>
-    
+
     <main class="container">
         <h1>Lista de Disciplinas</h1>
-        
+
         <form method="POST" class="search-form">
-            <input type="text" name="buscar" placeholder="Pesquisar por nome ou disciplina" value="<?= htmlspecialchars($buscar) ?>">
+            <input type="text" name="buscar" placeholder="Pesquisar por nome ou disciplina" value="<?= htmlspecialchars($buscar ?? '') ?>">
             <button type="submit" class="btn-buscar">Buscar</button>
         </form>
-        
+
         <div class="table-responsive">
             <table class="tabela-dados">
                 <thead>
                     <tr>
                         <th>Disciplina</th>
+                        <th>Ações</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <?php if ($result->rowCount() > 0): ?>
+                    <?php if ($result && $result->rowCount() > 0): ?>
                         <?php while ($user_data = $result->fetch(PDO::FETCH_ASSOC)): ?>
                             <tr>
                                 <td><?= htmlspecialchars($user_data['nome']) ?></td>
@@ -50,14 +55,14 @@ include('../protect.php');
                         <?php endwhile; ?>
                     <?php else: ?>
                         <tr>
-                            <td colspan="1" class="sem-dados">Nenhuma disciplina encontrada</td>
+                            <td colspan="2" class="sem-dados">Nenhuma disciplina encontrada</td>
                         </tr>
                     <?php endif; ?>
                 </tbody>
             </table>
-            <a href="cadastro_disciplina.php" class="btn-cadastrar">cadastrar</a>
+            <a href="cadastro_disciplina.php" class="btn-cadastrar">Cadastrar</a>
         </div>
-        <a href="admin.php">voltar</a>
+        <a href="admin.php">Voltar</a>
     </main>
 
     <footer class="footer"></footer>
@@ -65,4 +70,5 @@ include('../protect.php');
     <script src="../assets/js/navbar.js"></script>
     <script src="../assets/js/footer.js"></script>
 </body>
+
 </html>

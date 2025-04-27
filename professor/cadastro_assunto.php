@@ -61,7 +61,7 @@ include('function_cad_ass.php');
                 <button type="submit">Cadastrar</button>
 
             </form><br>
-            <a href="../assunto_admin.php"><button>voltar</button></a>
+            <a href="assunto_prof.php"><button>voltar</button></a>
         </section>
 
 

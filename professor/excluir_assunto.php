@@ -24,7 +24,7 @@ if (isset($_GET['id'])) {
         if ($stmt->execute()) {
             // Redireciona após a exclusão
             echo'Assunto Excluida com sucesso';
-            echo "<button type='button' class='btn btn-success'><a href='assunto_admin.php'>Voltar</a></button>";            exit();
+            echo "<button type='button' class='btn btn-success'><a href='assunto_prof.php'>Voltar</a></button>";            exit();
             exit();
         } else {
             echo "Erro ao excluir a assunto.";
