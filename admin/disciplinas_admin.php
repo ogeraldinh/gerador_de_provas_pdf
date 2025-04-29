@@ -1,7 +1,7 @@
 <?php
-require_once('conex.php');
-include("pesquisar_disc.php");
-include('protect.php');
+require_once('../conex.php');
+include("../pesquisar_disc.php");
+include('../protect.php');
 
 // Inicializa a variável $result
 
@@ -16,10 +16,10 @@ include('protect.php');
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="assets/css/main.css" />
-    <link rel="stylesheet" href="assets/css/navbar.css" />
-    <link rel="stylesheet" href="assets/css/footer.css" />
-    <link rel="stylesheet" href="assets/css/tabela.css" />
+    <link rel="stylesheet" href="../assets/css/main.css" />
+    <link rel="stylesheet" href="../assets/css/navbar.css" />
+    <link rel="stylesheet" href="../assets/css/footer.css" />
+    <link rel="stylesheet" href="../assets/css/tabela.css" />
     <title>Disciplinas</title>
 </head>
 
@@ -39,6 +39,7 @@ include('protect.php');
                 <thead>
                     <tr>
                         <th>Disciplina</th>
+                        <th>Ações</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -46,7 +47,10 @@ include('protect.php');
                         <?php while ($user_data = $result->fetch(PDO::FETCH_ASSOC)): ?>
                             <tr>
                                 <td><?= htmlspecialchars($user_data['nome']) ?></td>
-                               
+                                <td class="acoes">
+                                    <a href="atualizar_disciplina.php?id=<?= $user_data['id'] ?>" class="btn-editar">Editar</a>
+                                    <a href="excluir_disciplina.php?id=<?= $user_data['id'] ?>" class="btn-excluir" onclick="return confirm('Tem certeza que deseja excluir?')">Excluir</a>
+                                </td>
                             </tr>
                         <?php endwhile; ?>
                     <?php else: ?>
@@ -56,15 +60,15 @@ include('protect.php');
                     <?php endif; ?>
                 </tbody>
             </table>
-           
+            <a href="cadastro_disciplina.php" class="btn-cadastrar">Cadastrar</a>
         </div>
         <a href="admin.php">Voltar</a>
     </main>
 
     <footer class="footer"></footer>
 
-    <script src="assets/js/navbar.js"></script>
-    <script src="assets/js/footer.js"></script>
+    <script src="../assets/js/navbar.js"></script>
+    <script src="../assets/js/footer.js"></script>
 </body>
 
 </html>
