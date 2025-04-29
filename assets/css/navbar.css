@@ -13,8 +13,7 @@
 }
 
 
-.navbar ul,
-li a {
+.navbar ul, li a {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -36,11 +35,6 @@ li a {
     background-color: #0c6493;
 }
 
-/* .navbar a#selected {
-    background-color: #e8f1f2;
-    color: #0a4769;
-    font-weight: 600;
-} */
 
 .navbar #logo img {
     display: flex;

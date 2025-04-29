@@ -1,0 +1,22 @@
+.title {
+    font-family: "Montserrat", sans-serif;
+    background-image: linear-gradient(var(--title_gradient));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+    font-weight: bolder;
+    text-align: left;
+    font-size: 2em;
+    padding: 20px 0;
+}
+
+
+.main-content {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    margin: 60px;
+    position: relative;
+}

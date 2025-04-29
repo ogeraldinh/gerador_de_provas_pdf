@@ -22,16 +22,18 @@ include('protect.php');
     rel="stylesheet">
 
   <link rel="stylesheet" href="assets/css/main.css" />
+  <link rel="stylesheet" href="assets/css/questoes.css">
   <link rel="stylesheet" href="assets/css/navbar.css" />
   <link rel="stylesheet" href="assets/css/footer.css" />
+  
 
   <title>Banco de Questões</title>
 </head>
 
 <body>
   <nav class="navbar"></nav>
-      <main>
-      <form method="POST" action="questoes_.php">
+      <main class="main-content">
+      <form method="POST" action="questoes_.php" class="form-questoes">
         <label for="disciplina">Disciplina:</label>
         <select name="disciplina" id="disciplina" required>
             <option value="">Selecione uma disciplina</option>

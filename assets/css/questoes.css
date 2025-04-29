@@ -1,0 +1,46 @@
+.main-content {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    margin: 60px;
+    position: relative;
+}
+
+.main-content section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 20px;
+    width: 50%;
+    text-align: justify;
+}
+
+.main-exp {
+    margin: 10px 0;
+}
+
+.form-questoes {
+    background-color: #13293d;
+    border-radius: 25px;
+    width: 450px;
+    font-size: 1.2em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 50px;
+    margin: 20px 0 ;
+    color: #fff;
+}
+
+.form-questoes select {
+    width: 300px;
+    height: 2em;
+    margin-bottom: 30px;
+}
+
+.form-questoes select:focus {
+    outline: none;
+}
